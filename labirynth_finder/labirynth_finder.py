@@ -32,7 +32,7 @@ def find_wall_y(img, threshold, square_x, matrix, x_start, y_start, x_size, y_si
     labyrinth = np.copy(img)
     for j in range(grid - 1):
         b += 1
-        a = 0
+        a = -1
         for i in range(grid - 1):
             a += 1
             sum_of_white_pixels = np.sum(threshold[y_start + j * square_x:(j + 1) * (square_x) + y_start + y_size,
@@ -41,7 +41,7 @@ def find_wall_y(img, threshold, square_x, matrix, x_start, y_start, x_size, y_si
                 red = (0, 0, 255)
                 labyrinth[y_start + j * square_x:(j + 1) * (square_x) + y_start + y_size,
                 x_start + i * square_x:x_size + x_start + (i + 1) * square_x] = red
-                matrix[j + b, i + a - 1] = 0
+                matrix[j + b, i + a] = 0
             else:
                 green = (0, 255, 0)
                 labyrinth[y_start + j * square_x:(j + 1) * (square_x) + y_start + y_size,
